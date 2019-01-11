@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="Nethereum.Spelunker.Modules.Home.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:viewModels="clr-namespace:Nethereum.Spelunker.Modules.Home.ViewModels"
+             xmlns:views="clr-namespace:Nethereum.Spelunker.Modules.Home.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="900" d:DesignWidth="1600" d:DataContext="{d:DesignInstance viewModels:HomeViewModel}">
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <GroupBox Grid.Row="0"
+                      Grid.Column="0"
+                      Header="Blocks"
+                      Style="{DynamicResource MaterialDesignCardGroupBox}"
+                      Margin="16">
+                <GroupBox.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="CropSquare"
+                                                     Height="32" Width="32"
+                                                     VerticalAlignment="Center" />
+                            <TextBlock Margin="8,0,0,0"
+                                       VerticalAlignment="Center"
+                                       Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                       Text="{Binding}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </GroupBox.HeaderTemplate>
+
+                <views:BlockStreamView DataContext="{Binding BlockStream}" />
+            </GroupBox>
+
+            <GroupBox Grid.Row="0"
+                      Grid.Column="1"
+                      Header="Transactions"
+                      Style="{DynamicResource MaterialDesignCardGroupBox}"
+                      Margin="16">
+                <GroupBox.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="FormatListBulleted"
+                                                     Height="32" Width="32"
+                                                     VerticalAlignment="Center" />
+                            <TextBlock Margin="8,0,0,0"
+                                       VerticalAlignment="Center"
+                                       Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                       Text="{Binding}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </GroupBox.HeaderTemplate>
+
+                <views:TransactionStreamView DataContext="{Binding TransactionStream}" />
+            </GroupBox>
+
+            <GroupBox Grid.Row="0"
+                      Grid.Column="2"
+                      Header="Pending Transactions"
+                      Style="{DynamicResource MaterialDesignCardGroupBox}"
+                      Margin="16">
+                <GroupBox.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="FormatListBulleted"
+                                                     Height="32" Width="32"
+                                                     VerticalAlignment="Center" />
+                            <TextBlock Margin="8,0,0,0"
+                                       VerticalAlignment="Center"
+                                       Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                       Text="{Binding}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </GroupBox.HeaderTemplate>
+
+                <views:PendingTransactionStreamView DataContext="{Binding PendingTransactionStream}" />
+            </GroupBox>
+        </Grid>
+    </Grid>
+</UserControl>
